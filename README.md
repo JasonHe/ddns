@@ -2,7 +2,9 @@
 
 一键脚本命令：
 
+、、、
 wget -qO- https://raw.githubusercontent.com/JasonHe/ddns/main/ddns.sh | bash
+、、、
 
 一键ddns（基于ddns-go)
 
