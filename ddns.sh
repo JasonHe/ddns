@@ -1,4 +1,6 @@
 #!/bin/bash
+systemctl stop ddns-go
+rm /usr/bin/ddns-go
 mkdir ./ddns
 cd ./ddns
 uname -m | grep -qi aarch64 && oarch=linux_arm64 || oarch=linux_x86_64;
@@ -9,3 +11,4 @@ mv ./ddns-go /usr/bin
 cd ..
 rm -rf ./ddns
 ddns-go -s install
+systemctl start ddns-go
