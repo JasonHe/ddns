@@ -1,4 +1,4 @@
-# ddns-go 一键安装/升级脚本
+# ddns-go 一键安装/升级/卸载脚本
 
 [English Version / 英文说明](README.md)
 
@@ -10,9 +10,37 @@ wget -qO- https://github.com/JasonHe/ddns/raw/main/ddns.sh | bash
 
 安装完成后，请在浏览器中打开 `http://IP:9876` 进行配置。
 
-这是一个面向 [ddns-go](https://github.com/jeessy2/ddns-go) 的增强型跨发行版升级脚本项目。
+## 卸载
 
-该项目提供的升级脚本具备以下能力：
+将卸载脚本保存为 `uninstall-ddns-go.sh`，然后执行：
+
+```bash
+chmod +x uninstall-ddns-go.sh
+sudo ./uninstall-ddns-go.sh
+```
+
+或者直接使用远程一键卸载：
+
+```bash
+wget -qO- https://github.com/JasonHe/ddns/raw/main/uninstall-ddns-go.sh | bash
+```
+
+卸载脚本会：
+
+- 停止并禁用 `ddns-go` 服务
+- 在存在时删除 systemd 或 OpenRC 服务文件
+- 删除 `/usr/bin/ddns-go`
+
+如果你想在卸载后检查是否还有残留相关文件，可执行：
+
+```bash
+find / -name '*ddns-go*' 2>/dev/null
+```
+
+
+这是一个面向 [ddns-go](https://github.com/jeessy2/ddns-go) 的增强型跨发行版安装/升级/卸载脚本项目。
+
+该项目提供的安装/升级/卸载脚本具备以下能力：
 
 - 从 GitHub 自动获取 `ddns-go` 最新版本
 - 使用 `jq` 解析 release 元数据
@@ -157,7 +185,7 @@ sudo ./upgrade-ddns-go.sh
 
 ## 许可证
 
-你可以根据项目需要自行选择许可证。如果暂时还没有，通常可以考虑添加 MIT License。
+MIT License。
 
 ## 相关项目
 

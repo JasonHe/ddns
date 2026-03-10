@@ -1,4 +1,4 @@
-# ddns-go Install/Upgrade Script
+# ddns-go Install/Upgrade/Uninstall Script
 
 [中文说明 / Chinese Version](README_CN.md)
 
@@ -10,9 +10,37 @@ wget -qO- https://github.com/JasonHe/ddns/raw/main/ddns.sh | bash
 
 After installation, open `http://IP:9876` in your browser to complete the configuration.
 
-A robust cross-distribution upgrade script for [ddns-go](https://github.com/jeessy2/ddns-go).
+## Uninstall
 
-This project provides an upgrade script that:
+Save the uninstall script as `uninstall-ddns-go.sh`, then run:
+
+```bash
+chmod +x uninstall-ddns-go.sh
+sudo ./uninstall-ddns-go.sh
+```
+
+Or use one-command remote uninstall:
+
+```bash
+wget -qO- https://github.com/JasonHe/ddns/raw/main/uninstall-ddns-go.sh | bash
+```
+
+The uninstall script will:
+
+- stop and disable the `ddns-go` service
+- remove the systemd or OpenRC service file when present
+- remove `/usr/bin/ddns-go`
+
+To search for any remaining related files after uninstall:
+
+```bash
+find / -name '*ddns-go*' 2>/dev/null
+```
+
+
+A robust cross-distribution install/upgrade/uninstall script for [ddns-go](https://github.com/jeessy2/ddns-go).
+
+This project provides an install/upgrade/uninstall script that:
 
 - fetches the latest `ddns-go` release from GitHub
 - parses release metadata with `jq`
@@ -157,7 +185,7 @@ Use at your own risk. Although the script includes backup and rollback logic, yo
 
 ## License
 
-You may choose any license appropriate for your project. If you do not yet have one, consider adding an MIT License file.
+MIT License file.
 
 ## Related project
 
